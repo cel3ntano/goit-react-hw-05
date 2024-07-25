@@ -1,0 +1,29 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms linear;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.loadMoreWrapper {
+  height: 42px;
+  margin-top: 50px;
+}
+
+/* .ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
+} */
