@@ -1,13 +1,20 @@
-import { useEffect, useState, useRef } from "react";
+// import { useEffect, useState, useRef } from "react";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
 import Navigation from "./Navigation/Navigation";
-import MovieList from "./MovieList/MovieList";
+import HomePage from "../pages/HomePage/HomePage";
+import MoviesPage from "../pages/MoviesPage/MoviesPage";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 export default function App() {
   return (
     <>
       <Navigation />
-      <MovieList />
+      <Routes>
+        <Route path='/' element={<HomePage />}></Route>
+        <Route path='/movies' element={<MoviesPage />}></Route>
+        <Route path='*' element={<NotFoundPage />}></Route>
+      </Routes>
     </>
   );
 }
