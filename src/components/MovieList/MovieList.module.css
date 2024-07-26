@@ -1,0 +1,59 @@
+.movieList {
+  margin: 60px auto 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.movieItem {
+  position: relative;
+  overflow: hidden;
+  align-self: stretch;
+  flex: 1 1 18%;
+  background-color: #303855ad;
+  border: 2px solid rgb(160, 160, 160);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.movieItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 255, 255, 0);
+  transition: background-color 0.3s ease;
+  z-index: 1;
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.movieItem:hover::before {
+  background: rgba(192, 192, 192, 0.1);
+}
+
+.movieItem:hover {
+  z-index: 99;
+  border: 2px solid rgb(235, 235, 235);
+}
+
+.movieItem a:hover {
+  color: inherit;
+}
+
+.movieItem img {
+  margin: 0 auto;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.movieDetails {
+  margin-top: 10px;
+  padding: 10px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}

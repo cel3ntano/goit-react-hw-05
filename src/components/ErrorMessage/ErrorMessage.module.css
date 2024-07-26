@@ -1,0 +1,9 @@
+.errorMessage {
+  line-height: 1.7;
+  margin: 0 auto;
+  max-width: 320px;
+  font-size: 20px;
+  z-index: 4;
+  margin-top: 24px;
+  color: #fcc2c2;
+}

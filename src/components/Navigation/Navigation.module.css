@@ -1,6 +1,26 @@
 .navigation {
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 16px;
+  z-index: 999;
+  padding: 16px 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #757575;
+}
+
+.link {
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  color: aquamarine;
+}
+
+.link.active {
+  color: aqua;
 }

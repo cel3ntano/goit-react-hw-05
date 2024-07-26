@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import css from "./NotFoundPage.module.css";
+import { Link } from "react-router-dom";
 
 export default function NotFoundPage() {
   useEffect(() => {
@@ -36,7 +37,9 @@ export default function NotFoundPage() {
           </div>
           <p>We are unable to find the page you&apos;re looking for</p>
           <div>
-            <button>Back to Home</button>
+            <Link to='/'>
+              <button>Back to Home</button>
+            </Link>
           </div>
         </section>
       </main>

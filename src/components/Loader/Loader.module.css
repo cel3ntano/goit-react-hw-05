@@ -1,0 +1,10 @@
+.loader {
+  justify-content: center;
+  z-index: 3;
+}
+
+.loader svg {
+  fill: #b5c3b5;
+  height: 60px;
+  width: 60px;
+}
