@@ -13,7 +13,7 @@
   align-self: stretch;
   flex: 1 1 18%;
   background-color: #303855ad;
-  border: 2px solid rgb(160, 160, 160);
+  border: 2px solid rgb(128, 128, 128);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
@@ -38,7 +38,7 @@
 
 .movieItem:hover {
   z-index: 99;
-  border: 2px solid rgb(235, 235, 235);
+  border: 2px solid rgb(163, 163, 163);
 }
 
 .movieItem a:hover {
