@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { useState } from "react";
 import Loader from "../../components/Loader/Loader";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();

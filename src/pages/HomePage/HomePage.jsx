@@ -48,7 +48,6 @@ export default function HomePage() {
         });
         setTotalPages(totalPages);
       } catch (error) {
-        console.log(error);
         setIsError(true);
       } finally {
         setIsLoading(false);
@@ -59,7 +58,7 @@ export default function HomePage() {
   }, [page]);
 
   return (
-    <>
+    <div className={css.homepage}>
       <MovieList movies={trendingMovies} ref={movieListRef} />
       {isError && (
         <ErrorMessage>
@@ -75,6 +74,6 @@ export default function HomePage() {
             <LoadMoreBtn onClick={handleLoadMore}>Load more</LoadMoreBtn>
           )}
       </div>
-    </>
+    </div>
   );
 }

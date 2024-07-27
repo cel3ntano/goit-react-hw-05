@@ -5,6 +5,7 @@ axios.defaults.baseURL = "https://api.themoviedb.org";
 axios.defaults.headers.common = { Authorization: `Bearer ${readToken}` };
 const trendingURL = "/3/trending/movie/day";
 const detailsURL = "/3/movie";
+const queryURL = "/3/search/movie";
 
 export const posterBaseURL = "https://image.tmdb.org/t/p/w500";
 
@@ -16,6 +17,11 @@ export async function fetchTrendingMovies(page) {
 
 export async function fecthMovieById(movieId) {
   const response = await axios.get(`${detailsURL}/${movieId}`);
-  // console.log(response.data);
   return response.data;
+}
+
+export async function fecthMovieByQuery(query, page) {
+  const response = await axios.get(queryURL, { params: { query, page } });
+  const { total_pages: totalPages, results: queryResults } = response.data;
+  return { totalPages, queryResults };
 }
