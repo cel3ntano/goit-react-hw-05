@@ -1,10 +1,6 @@
-import clsx from "clsx";
+import { getNavlinkClass } from "../../helpers/getNavlinkClass";
 import css from "./Navigation.module.css";
 import { NavLink } from "react-router-dom";
-
-const getNavlinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
 
 export default function Navigation() {
   return (
@@ -12,12 +8,16 @@ export default function Navigation() {
       <nav>
         <ul className={css.navigation}>
           <li>
-            <NavLink to='/' className={getNavlinkClass}>
+            <NavLink
+              to='/'
+              className={({ isActive }) => getNavlinkClass(css, { isActive })}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to='/movies' className={getNavlinkClass}>
+            <NavLink
+              to='/movies'
+              className={({ isActive }) => getNavlinkClass(css, { isActive })}>
               Movies
             </NavLink>
           </li>

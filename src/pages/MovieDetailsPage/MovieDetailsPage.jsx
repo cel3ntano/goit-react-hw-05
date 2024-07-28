@@ -1,14 +1,20 @@
-import { useParams } from "react-router-dom";
-import css from "./MovieDetailsPage.module.css";
-import { fecthMovieById, posterBaseURL } from "../../api/movies";
-import { useEffect } from "react";
+import { formatDate } from "../../helpers/format_date";
+import { getNavlinkClass } from "../../helpers/getNavlinkClass";
+import {
+  fecthMovieById,
+  placeholderPortrait,
+  posterBaseURL,
+} from "../../api/movies";
+import { useParams, NavLink, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { useState } from "react";
 import Loader from "../../components/Loader/Loader";
-import { format } from "date-fns";
+import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [movieDetails, setMovieDetails] = useState({
     genres: [],
     runtime: null,
@@ -19,8 +25,6 @@ export default function MovieDetailsPage() {
     title: "",
     released: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const getMovieDetailsById = async () => {
@@ -55,27 +59,13 @@ export default function MovieDetailsPage() {
       }
     };
 
-    // return () => {
-    //   second;
-    // };
-
     getMovieDetailsById();
-    // console.log(runtime, released);
   }, [movieId]);
 
   const { genres, runtime, overview, homepage, vote, poster, title, released } =
     movieDetails;
 
-  const formatDate = dateString => {
-    if (!dateString) return;
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) {
-      return;
-    }
-    return format(date, "dd MMM yyyy");
-  };
-
-  const posterSrc = `${posterBaseURL}${poster}`;
+  const posterSrc = poster ? `${posterBaseURL}${poster}` : placeholderPortrait;
 
   function formatDuration(minutes) {
     const hours = Math.floor(minutes / 60);
@@ -122,11 +112,10 @@ export default function MovieDetailsPage() {
                   <p>Duration: {formatDuration(runtime)}</p>
                 </li>
                 <li>
-                  <p>Rating: {vote}</p>
+                  <p>Rating: {vote !== null ? vote.toFixed(1) : "N/A"}</p>
                 </li>
                 <li>
                   <p> Release date: {formatDate(released)}</p>
-                  {/* <p> Release date: {released}</p> */}
                 </li>
                 <li>
                   <a href={homepage}>Movie official page</a>
@@ -134,6 +123,32 @@ export default function MovieDetailsPage() {
               </ul>
             </li>
           </ul>
+          <div className={css.additionalInfoNavigation}>
+            <h3 className={css.additionalInfoTitle}>Additional information</h3>
+            <ul className={css.additionalInfoButtons}>
+              <li>
+                <NavLink
+                  to='cast'
+                  className={({ isActive }) =>
+                    getNavlinkClass(css, { isActive })
+                  }>
+                  Cast
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to='reviews'
+                  className={({ isActive }) =>
+                    getNavlinkClass(css, { isActive })
+                  }>
+                  Reviews
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+          <div className={css.additionalInfoWrapper}>
+            <Outlet />
+          </div>
         </div>
       )}
     </>

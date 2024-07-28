@@ -10,6 +10,11 @@
 
 .poster {
   max-width: 300px;
+
+  img {
+    border: 2px solid rgb(120, 118, 118);
+    border-radius: 16px;
+  }
 }
 
 .movieDetailsList {
@@ -34,4 +39,33 @@
 
 .overview {
   max-width: 400px;
+}
+
+.additionalInfoNavigation {
+  margin: 40px auto 0;
+}
+
+.additionalInfoTitle {
+  text-align: center;
+  color: rgb(164, 210, 210);
+}
+
+.additionalInfoButtons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.link {
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  color: aquamarine;
+}
+
+.link.active {
+  color: aqua;
 }

@@ -10,6 +10,7 @@ import Loader from "../../components/Loader/Loader";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -21,42 +22,36 @@ export default function MoviesPage() {
   const movieListRef = useRef(null);
   const [hasSearched, setHasSearched] = useState(false);
 
+  const [params, setParams] = useSearchParams();
+  // ===================================================================
   const handleSubmit = e => {
     e.preventDefault();
-    const query = e.target.elements.search.value.trim();
-    const notify = () =>
+    const newQuery = e.target.elements.search.value.trim();
+    const emptyQuery = () =>
       toast.error("Please enter a search query", {
         duration: 2000,
       });
-    if (query === "") {
-      notify();
+    const sameQuery = () =>
+      toast.error(`Already showing results for '${newQuery}'`, {
+        duration: 2000,
+      });
+    if (newQuery === "") {
+      emptyQuery();
       return;
     }
-    setQuery(query);
+    if (newQuery === query) {
+      sameQuery();
+      return;
+    }
+    setMovies([]);
+    setPage(1);
+    setQuery(newQuery);
     e.target.reset();
   };
 
   const handleLoadMore = () => {
     setPage(prev => prev + 1);
   };
-
-  useEffect(() => {
-    if (page > 1) {
-      const timerId = setTimeout(() => {
-        if (movieListRef.current) {
-          const lastItem = movieListRef.current.querySelector("li:last-child");
-          const cardHeight = lastItem.getBoundingClientRect().height;
-          if (lastItem) {
-            window.scrollBy({
-              top: cardHeight * 2,
-              behavior: "smooth",
-            });
-          }
-        }
-      }, 200);
-      return () => clearTimeout(timerId);
-    }
-  }, [page, movies]);
 
   useEffect(() => {
     if (!query) return;
@@ -80,8 +75,26 @@ export default function MoviesPage() {
       }
     };
     getMoviesByQuery();
-    console.log(movies);
+    // console.log(movies);new date
   }, [page, query]);
+
+  useEffect(() => {
+    if (page > 1) {
+      const timerId = setTimeout(() => {
+        if (movieListRef.current) {
+          const lastItem = movieListRef.current.querySelector("li:last-child");
+          if (lastItem) {
+            const cardHeight = lastItem.getBoundingClientRect().height;
+            window.scrollBy({
+              top: cardHeight * 2,
+              behavior: "smooth",
+            });
+          }
+        }
+      }, 200);
+      return () => clearTimeout(timerId);
+    }
+  }, [page, movies]);
 
   return (
     <div className={css.moviesPage}>
@@ -101,6 +114,7 @@ export default function MoviesPage() {
               padding: "8px",
               color: "#bababa",
               marginTop: "45px",
+              maxWidth: "500px",
             },
             error: {
               iconTheme: {

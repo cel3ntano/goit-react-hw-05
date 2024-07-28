@@ -5,13 +5,14 @@ import css from "./HomePage";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { useSearchParams } from "react-router-dom";
 
 export default function HomePage() {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
   const [isError, setIsError] = useState(false);
+  const [page, setPage] = useState(1);
   const movieListRef = useRef(null);
 
   const handleLoadMore = () => {

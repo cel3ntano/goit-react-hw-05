@@ -12,7 +12,20 @@
   overflow: hidden;
   align-self: stretch;
   flex: 1 1 18%;
-  background-color: #303855ad;
+  /* background: #234ad6ad; */
+  background: linear-gradient(
+    330deg,
+    hsl(221deg 58% 15%) 0%,
+    hsl(257deg 35% 18%) 11%,
+    hsl(294deg 36% 18%) 23%,
+    hsl(323deg 44% 20%) 35%,
+    hsl(340deg 49% 22%) 46%,
+    hsl(355deg 46% 25%) 58%,
+    hsl(12deg 54% 25%) 69%,
+    hsl(26deg 66% 22%) 80%,
+    hsl(40deg 76% 20%) 90%,
+    hsl(55deg 74% 18%) 100%
+  );
   border: 2px solid rgb(128, 128, 128);
   border-radius: 16px;
   transition: all 0.3s ease;
@@ -52,8 +65,30 @@
 }
 
 .movieDetails {
-  margin-top: 10px;
-  padding: 10px;
+  position: relative;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
+}
+
+.vote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -25px;
+  left: 5px;
+  /* transform: translateX(-50%); */
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #2a35ac8e;
+}
+
+.releaseDate {
+  color: rgb(62, 158, 243);
 }
