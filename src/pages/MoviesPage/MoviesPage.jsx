@@ -19,21 +19,20 @@ export default function MoviesPage() {
   const movieListRef = useRef(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [params, setParams] = useSearchParams();
+  const [isLoadMoreClicked, setIsLoadMoreClicked] = useState(false);
+
   const query = params.get("query") ?? "";
   const page = Number(params.get("page") ?? 1);
 
-  const handleSearch = newQuery => {
+  const clearMovies = () => {
     setMovies([]);
-    setParams({ query: newQuery, page: 1 });
-    // params.set("query", newQuery);
-    // params.set("page", 1);
-    // setParams(params);
   };
 
   const handleLoadMore = () => {
     const newPage = page + 1;
     params.set("page", newPage);
     setParams(params);
+    setIsLoadMoreClicked(true);
   };
 
   useEffect(() => {
@@ -58,7 +57,6 @@ export default function MoviesPage() {
       }
     };
     getMoviesByQuery();
-    // console.log(movies);new date
   }, [page, query]);
 
   useEffect(() => {
@@ -81,7 +79,7 @@ export default function MoviesPage() {
 
   return (
     <div className={css.moviesPage}>
-      <SearchBar handleSearch={handleSearch} />
+      <SearchBar clearMovies={clearMovies} />
       <MovieList movies={movies} ref={movieListRef} />
       {isError && (
         <ErrorMessage>
