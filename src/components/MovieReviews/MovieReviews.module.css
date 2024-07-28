@@ -1,0 +1,28 @@
+.reviewsList {
+  padding: 0 10px;
+  /* text-align: center; */
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.reviewWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.author {
+  color: rgb(144, 255, 255);
+}
+
+.posted {
+  color: rgb(194, 194, 194);
+}
+
+.content {
+  font-size: 14px;
+}

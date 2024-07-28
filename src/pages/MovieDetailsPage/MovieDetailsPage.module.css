@@ -1,5 +1,5 @@
 .movieDetailsWrapper {
-  /* max-width: 960px; */
+  max-width: 1000px;
   margin: 20px auto 0px;
   text-align: left;
 }
@@ -10,19 +10,39 @@
 
 .poster {
   max-width: 300px;
+  position: relative;
+  display: inline-block;
 
   img {
-    border: 2px solid rgb(120, 118, 118);
-    border-radius: 16px;
+    border: 2px solid rgb(77, 92, 101);
+    border-radius: 10px;
+    display: block;
+    position: relative;
+    z-index: 1;
   }
 }
 
 .movieDetailsList {
+  -webkit-box-shadow: 5px 5px 100px 1px rgba(0, 0, 0, 0.24);
+  box-shadow: 5px 5px 100px 1px rgba(0, 0, 0, 0.24);
+  background: linear-gradient(
+    to right,
+    rgba(166, 155, 183, 0.311),
+    rgba(110, 173, 173, 0.244),
+    rgba(110, 119, 173, 0.205)
+  );
+  border-radius: 8px;
+  padding: 30px 40px;
   margin-top: 20px;
   gap: 40px;
   display: flex;
   justify-content: center;
   align-items: stretch;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .movieDescriptionList {
@@ -30,15 +50,90 @@
   flex-direction: column;
   gap: 20px;
   flex: 1;
+
+  span {
+    color: rgb(37, 255, 255);
+    font-weight: 500;
+    margin-right: 3px;
+  }
 }
 
 .genresList {
+  position: relative;
+  padding-bottom: 10px;
   display: flex;
   gap: 10px;
 }
 
+.genresList::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgb(98, 136, 175),
+    rgb(110, 173, 173),
+    rgb(110, 119, 173)
+  );
+}
+
 .overview {
   max-width: 400px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.overview::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgb(98, 136, 175),
+    rgb(110, 173, 173),
+    rgb(110, 119, 173)
+  );
+}
+
+.homePageItem a {
+  padding: 8px 10px;
+  -webkit-box-shadow: -1px 11px 17px -3px rgba(0, 0, 0, 0.178);
+  box-shadow: -1px 7px 17px -3px rgba(0, 0, 0, 0.203);
+  color: rgb(194, 219, 241);
+  background: #5a5fb5;
+  border: 1px solid rgba(186, 182, 194, 0.53);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.homePageItem {
+  position: relative;
+  padding-bottom: 20px;
+  a:hover {
+    color: rgb(114, 227, 247);
+    background: #494d9e;
+  }
+}
+
+.homePageItem::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgb(98, 136, 175),
+    rgb(110, 173, 173),
+    rgb(110, 119, 173)
+  );
 }
 
 .additionalInfoNavigation {
@@ -46,10 +141,25 @@
 }
 
 .additionalInfoTitle {
+  position: relative;
   padding-bottom: 5px;
   text-align: center;
   color: rgb(164, 210, 210);
-  border-bottom: 1px solid gray;
+}
+
+.additionalInfoTitle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgb(110, 119, 173),
+    rgb(110, 173, 173),
+    rgb(98, 136, 175)
+  );
 }
 
 .additionalInfoButtons {
@@ -70,4 +180,32 @@
 
 .link.active {
   color: aqua;
+}
+
+.poster::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-bottom: 150%;
+  border-radius: 10px;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 255, 255, 0.5),
+    rgba(255, 0, 255, 0.5)
+  );
+  filter: blur(15px);
+  z-index: 0;
+  animation: glow 3s infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

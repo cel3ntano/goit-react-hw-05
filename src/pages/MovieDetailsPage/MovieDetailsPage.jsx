@@ -114,16 +114,25 @@ export default function MovieDetailsPage() {
                   <p className={css.overview}>{overview}</p>
                 </li>
                 <li>
-                  <p>Duration: {formatDuration(runtime)}</p>
+                  <p>
+                    <span>Duration:</span> {formatDuration(runtime)}
+                  </p>
                 </li>
                 <li>
-                  <p>Rating: {vote !== null ? vote.toFixed(1) : "N/A"}</p>
+                  <p>
+                    <span>Rating:</span>{" "}
+                    {vote !== null ? vote.toFixed(1) : "N/A"}
+                  </p>
                 </li>
                 <li>
-                  <p> Release date: {formatDate(released)}</p>
+                  <p>
+                    <span>Release date:</span> {formatDate(released)}
+                  </p>
                 </li>
-                <li>
-                  <a href={homepage}>Movie official page</a>
+                <li className={css.homePageItem}>
+                  <a href={homepage} target='_blank'>
+                    Movie official page
+                  </a>
                 </li>
               </ul>
             </li>

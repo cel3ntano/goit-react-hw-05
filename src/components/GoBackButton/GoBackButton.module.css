@@ -1,18 +1,27 @@
 .goBackButton {
-  display: block;
-  padding: 5px;
-  width: 100px;
-  margin: 0 auto;
-  margin-top: 40px;
-  background: #637386;
-  border: 2px solid rgb(74, 70, 83);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  -webkit-box-shadow: -1px 11px 17px -3px rgba(0, 0, 0, 0.178);
+  box-shadow: -1px 7px 17px -3px rgba(0, 0, 0, 0.203);
+  color: rgb(194, 219, 241);
+  background: #5a5fb5;
+  border: 1px solid rgba(186, 182, 194, 0.53);
   border-radius: 10px;
-  color: rgb(215, 229, 241);
+  padding: 5px 12px;
+  width: 120px;
+  margin: 40px auto 0px;
   transition: all 0.2s ease;
 }
 
+.goBackButton span {
+  display: flex;
+  align-items: center;
+}
+
 .goBackButton:hover {
-  background: #6d7d92;
+  background: #6a6fcf;
   color: aliceblue;
 }
 

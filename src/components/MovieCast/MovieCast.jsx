@@ -16,8 +16,7 @@ export default function MovieCast() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [visibleCount, setVisibleCount] = useState(5);
-
-  const lastElementRef = useRef(null);
+  const LoadMoreRef = useRef();
 
   const handleLoadMore = () => {
     setVisibleCount(prevCount => prevCount + 5);
@@ -41,11 +40,9 @@ export default function MovieCast() {
 
   useEffect(() => {
     if (visibleCount > 5) {
-      lastElementRef.current.scrollIntoView({ behavior: "smooth" });
+      LoadMoreRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [visibleCount]);
-
-  console.log(movieCredits);
 
   return (
     <>
@@ -58,32 +55,24 @@ export default function MovieCast() {
       <ul className={css.creditsList}>
         {movieCredits
           .slice(0, visibleCount)
-          .map(
-            (
-              { profile_path: profileImg, name, character, cast_id: id },
-              index,
-              array
-            ) => {
-              const profileImgSrc = profileImg
-                ? `${posterBaseURL}${profileImg}`
-                : placeholderPortrait;
-              return (
-                <li
-                  key={id}
-                  ref={index === array.length - 1 ? lastElementRef : null}>
-                  <div>
-                    <img src={profileImgSrc} alt={`${name} portrait`} />
-                  </div>
-                  <div className={css.actorDescription}>
-                    <p className={css.actorName}>{name}</p>
-                    <p>{character}</p>
-                  </div>
-                </li>
-              );
-            }
-          )}
+          .map(({ profile_path: profileImg, name, character, cast_id: id }) => {
+            const profileImgSrc = profileImg
+              ? `${posterBaseURL}${profileImg}`
+              : placeholderPortrait;
+            return (
+              <li key={id}>
+                <div>
+                  <img src={profileImgSrc} alt={`${name} portrait`} />
+                </div>
+                <div className={css.actorDescription}>
+                  <p className={css.actorName}>{name}</p>
+                  <p>{character}</p>
+                </div>
+              </li>
+            );
+          })}
       </ul>
-      <div className='loadMoreWrapper'>
+      <div className='loadMoreWrapper' ref={LoadMoreRef}>
         {visibleCount < movieCredits.length && (
           <LoadMoreBtn onClick={handleLoadMore}>Load more</LoadMoreBtn>
         )}

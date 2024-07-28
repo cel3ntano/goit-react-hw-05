@@ -13,7 +13,15 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #4c4c4c;
+  /* background-color: #4c4c4c; */
+  background: rgb(48, 74, 112);
+  background: linear-gradient(
+    352deg,
+    rgba(48, 74, 112, 1) 0%,
+    rgba(79, 56, 111, 1) 29%,
+    rgba(79, 60, 121, 1) 63%,
+    rgba(59, 85, 134, 1) 100%
+  );
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

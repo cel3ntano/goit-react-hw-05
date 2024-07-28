@@ -1,4 +1,9 @@
 .navigation {
+  border-bottom: 2px solid rgb(94, 172, 221);
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  -webkit-box-shadow: -1px 11px 17px -3px rgba(0, 0, 0, 0.31);
+  box-shadow: -1px 11px 17px -3px rgba(0, 0, 0, 0.31);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -10,7 +15,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #757575;
+  /* background-color: #757575; */
+  background: rgb(51, 56, 159);
+  background: linear-gradient(
+    165deg,
+    rgba(51, 56, 159, 1) 0%,
+    rgba(64, 73, 140, 1) 52%,
+    rgba(12, 73, 159, 1) 100%
+  );
 }
 
 .link {

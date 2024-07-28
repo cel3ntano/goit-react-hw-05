@@ -26,7 +26,8 @@
     hsl(40deg 76% 20%) 90%,
     hsl(55deg 74% 18%) 100%
   );
-  border: 2px solid rgb(128, 128, 128);
+  /* border: 2px solid rgb(128, 128, 128); */
+  border: 2px solid rgba(128, 128, 128, 0.463);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
@@ -51,7 +52,7 @@
 
 .movieItem:hover {
   z-index: 99;
-  border: 2px solid rgb(163, 163, 163);
+  border: 2px solid rgba(163, 163, 163, 0.696);
 }
 
 .movieItem a:hover {
