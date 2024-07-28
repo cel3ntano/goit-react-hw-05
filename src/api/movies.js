@@ -1,5 +1,4 @@
 import axios from "axios";
-// const accessKey = import.meta.env.VITE_tmdb_api;
 const readToken = import.meta.env.VITE_tmdb_token;
 axios.defaults.baseURL = "https://api.themoviedb.org";
 axios.defaults.headers.common = { Authorization: `Bearer ${readToken}` };
