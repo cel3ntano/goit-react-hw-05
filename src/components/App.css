@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
@@ -23,8 +23,3 @@
   margin-top: 50px;
   text-align: center;
 }
-
-/* .ReactModal__Body--open,
-.ReactModal__Html--open {
-  overflow: hidden;
-} */

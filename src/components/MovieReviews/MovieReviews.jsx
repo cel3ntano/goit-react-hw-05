@@ -43,8 +43,13 @@ export default function MovieReviews() {
 
   return (
     <>
-      {movieReviews.length === 0 && (
+      {!isLoading && movieReviews.length === 0 && (
         <ErrorMessage>No reviews yet...</ErrorMessage>
+      )}
+      {isError && (
+        <ErrorMessage>
+          Something went wrong... Please, reload the page
+        </ErrorMessage>
       )}
       <Loader isLoading={isLoading} />
       <ul className={css.reviewsList}>

@@ -1,17 +1,17 @@
 .goBackButton {
+  width: 120px;
+  margin: 55px auto 0px;
+  padding: 5px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  -webkit-box-shadow: -1px 11px 17px -3px rgba(0, 0, 0, 0.178);
-  box-shadow: -1px 7px 17px -3px rgba(0, 0, 0, 0.203);
-  color: rgb(194, 219, 241);
-  background: #5a5fb5;
-  border: 1px solid rgba(186, 182, 194, 0.53);
   border-radius: 10px;
-  padding: 5px 12px;
-  width: 120px;
-  margin: 40px auto 0px;
+  background: #5a5fb5;
+  color: rgb(194, 219, 241);
+  border: 1px solid rgba(186, 182, 194, 0.53);
+  box-shadow: -1px 7px 17px -3px rgba(0, 0, 0, 0.203);
+  -webkit-box-shadow: -1px 11px 17px -3px rgba(0, 0, 0, 0.178);
   transition: all 0.2s ease;
 }
 

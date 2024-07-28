@@ -24,7 +24,6 @@ export default function HomePage() {
         if (movieListRef.current) {
           const lastItem = movieListRef.current.querySelector("li:last-child");
           const cardHeight = lastItem.getBoundingClientRect().height;
-          // console.log(cardHeight);
           if (lastItem) {
             window.scrollBy({
               top: cardHeight * 2,
@@ -54,7 +53,6 @@ export default function HomePage() {
       }
     };
     getTrendingMovies();
-    // console.log(totalPages, trendingMovies);
   }, [page]);
 
   return (

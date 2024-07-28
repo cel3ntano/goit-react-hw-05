@@ -1,7 +1,7 @@
 .searchForm {
   padding: 0 20px;
   max-width: 640px;
-  margin: 0 auto;
+  margin: 52px auto 0px;
   position: relative;
 }
 
@@ -46,7 +46,6 @@
   top: 0;
   right: 30px;
   padding: 12px 0;
-  /* margin-left: -20px; */
   background-color: transparent;
   color: rgb(224, 224, 224);
   transition: color 0.5s ease, scale 0.2s ease;

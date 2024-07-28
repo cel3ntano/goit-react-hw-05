@@ -47,7 +47,7 @@ export default function SearchBar({ clearMovies }) {
       </button>
       <Toaster
         containerStyle={{
-          top: 80,
+          top: 75,
         }}
         toastOptions={{
           style: {
