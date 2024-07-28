@@ -1,20 +1,20 @@
+import css from "./MovieDetailsPage.module.css";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loader from "../../components/Loader/Loader";
+import GoBackButton from "../../components/GoBackButton/GoBackButton";
 import { formatDate } from "../../helpers/format_date";
 import { getNavlinkClass } from "../../helpers/getNavlinkClass";
+import { useParams, NavLink, Outlet, useLocation } from "react-router-dom";
+import { useEffect, useState, useRef, Suspense } from "react";
 import {
   fecthMovieById,
   placeholderPortrait,
   posterBaseURL,
 } from "../../api/movies";
-import { useParams, NavLink, Outlet, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import Loader from "../../components/Loader/Loader";
-import { Link } from "react-router-dom";
-import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
   const location = useLocation();
-  console.log(location);
+  const goBackBtnRef = useRef(location?.state ?? "/movies");
 
   const { movieId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
@@ -79,9 +79,7 @@ export default function MovieDetailsPage() {
 
   return (
     <>
-      <Link to={location.state ?? "/movies"}>
-        <div className={css.goBackLink}>Go back</div>
-      </Link>
+      <GoBackButton path={goBackBtnRef.current}>Go back</GoBackButton>
       {isError && (
         <ErrorMessage>
           Something went wrong... Please, reload the page
@@ -154,7 +152,9 @@ export default function MovieDetailsPage() {
             </ul>
           </div>
           <div className={css.additionalInfoWrapper}>
-            <Outlet />
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
           </div>
         </div>
       )}

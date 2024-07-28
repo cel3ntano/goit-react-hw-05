@@ -21,6 +21,7 @@
 .loadMoreWrapper {
   height: 42px;
   margin-top: 50px;
+  text-align: center;
 }
 
 /* .ReactModal__Body--open,

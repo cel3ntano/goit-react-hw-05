@@ -18,11 +18,11 @@ export default function MoviesPage() {
   const [isError, setIsError] = useState(false);
   const movieListRef = useRef(null);
   const [hasSearched, setHasSearched] = useState(false);
-  const [params, setParams] = useSearchParams();
-  const [isLoadMoreClicked, setIsLoadMoreClicked] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const [isLoadMoreClicked, setIsLoadMoreClicked] = useState(false);
 
-  const query = params.get("query") ?? "";
-  const page = Number(params.get("page") ?? 1);
+  const query = searchParams.get("query") ?? "";
+  const page = Number(searchParams.get("page") ?? 1);
 
   const clearMovies = () => {
     setMovies([]);
@@ -30,9 +30,9 @@ export default function MoviesPage() {
 
   const handleLoadMore = () => {
     const newPage = page + 1;
-    params.set("page", newPage);
-    setParams(params);
-    setIsLoadMoreClicked(true);
+    searchParams.set("page", newPage);
+    setSearchParams(searchParams);
+    // setIsLoadMoreClicked(true);
   };
 
   useEffect(() => {
