@@ -6,6 +6,7 @@ import { formatDate } from "../../helpers/format_date";
 import { getNavlinkClass } from "../../helpers/getNavlinkClass";
 import { useParams, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState, useRef, Suspense } from "react";
+import clsx from "clsx";
 import {
   fecthMovieById,
   placeholderPortrait,
@@ -76,6 +77,11 @@ export default function MovieDetailsPage() {
     const mins = minutes % 60;
     return `${hours}h ${mins}m`;
   }
+  const voteClass = clsx({
+    [css.low]: vote < 4,
+    [css.middle]: vote >= 4 && vote <= 6,
+    [css.high]: vote > 6,
+  });
 
   return (
     <>
@@ -115,18 +121,22 @@ export default function MovieDetailsPage() {
                 </li>
                 <li>
                   <p>
-                    <span>Duration:</span> {formatDuration(runtime)}
+                    Duration:
+                    <span>{formatDuration(runtime)}</span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span>Rating:</span>{" "}
-                    {vote !== null ? vote.toFixed(1) : "N/A"}
+                    Rating:
+                    <span className={clsx(css.vote, voteClass)}>
+                      {vote !== null ? vote.toFixed(1) : "N/A"}
+                    </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span>Release date:</span> {formatDate(released)}
+                    Release date:
+                    <span>{formatDate(released)}</span>
                   </p>
                 </li>
                 <li className={css.homePageItem}>

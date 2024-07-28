@@ -3,9 +3,11 @@ import css from "./MovieList.module.css";
 import { forwardRef } from "react";
 import { placeholderPortrait, posterBaseURL } from "../../api/movies";
 import { formatDate } from "../../helpers/format_date";
+import clsx from "clsx";
 
 const MovieList = forwardRef(({ movies }, ref) => {
   const location = useLocation();
+
   return (
     <ul className={css.movieList} ref={ref}>
       {movies &&
@@ -17,6 +19,11 @@ const MovieList = forwardRef(({ movies }, ref) => {
             release_date: released,
             poster_path: poster,
           }) => {
+            const voteClass = clsx({
+              [css.low]: vote < 4,
+              [css.middle]: vote >= 4 && vote <= 6,
+              [css.high]: vote > 6,
+            });
             const imgSrc = poster
               ? `${posterBaseURL}${poster}`
               : placeholderPortrait;
@@ -25,7 +32,7 @@ const MovieList = forwardRef(({ movies }, ref) => {
                 <Link to={`/movies/${id}`} state={location}>
                   <img src={imgSrc} alt={title} height='220'></img>
                   <div className={css.movieDetails}>
-                    <p className={css.vote}>
+                    <p className={clsx(css.vote, voteClass)}>
                       {vote !== null ? vote.toFixed(1) : "N/A"}
                     </p>
                     <p className={css.releaseDate}>

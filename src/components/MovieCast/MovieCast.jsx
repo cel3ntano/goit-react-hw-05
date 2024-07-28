@@ -23,6 +23,18 @@ export default function MovieCast() {
   };
 
   useEffect(() => {
+    if (visibleCount > 5) {
+      const timerId = setTimeout(() => {
+        if (LoadMoreRef.current) {
+          LoadMoreRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+
+      return () => clearTimeout(timerId);
+    }
+  }, [visibleCount]);
+
+  useEffect(() => {
     const getMovieCreditsData = async () => {
       try {
         setIsError(false);
@@ -37,12 +49,6 @@ export default function MovieCast() {
     };
     getMovieCreditsData();
   }, [movieId]);
-
-  useEffect(() => {
-    if (visibleCount > 5) {
-      LoadMoreRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [visibleCount]);
 
   return (
     <>

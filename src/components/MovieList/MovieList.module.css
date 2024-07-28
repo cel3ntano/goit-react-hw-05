@@ -9,10 +9,10 @@
 
 .movieItem {
   position: relative;
+  color: rgb(217, 217, 217);
   overflow: hidden;
   align-self: stretch;
   flex: 1 1 18%;
-  /* background: #234ad6ad; */
   background: linear-gradient(
     330deg,
     hsl(221deg 58% 15%) 0%,
@@ -26,7 +26,6 @@
     hsl(40deg 76% 20%) 90%,
     hsl(55deg 74% 18%) 100%
   );
-  /* border: 2px solid rgb(128, 128, 128); */
   border: 2px solid rgba(128, 128, 128, 0.463);
   border-radius: 16px;
   transition: all 0.3s ease;
@@ -86,10 +85,39 @@
   /* transform: translateX(-50%); */
   width: 40px;
   height: 40px;
-  border-radius: 10px;
-  background-color: #2a35ac8e;
+  border-radius: 20px;
+  /* background-color: #2a35ac8e; */
+}
+
+.low {
+  border: 2px solid rgba(255, 55, 0, 0.461);
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(255, 55, 0, 0.053) 100%
+  );
+}
+.middle {
+  border: 2px solid rgba(255, 251, 0, 0.461);
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(255, 204, 0, 0.053) 100%
+  );
+}
+
+.high {
+  border: 2px solid rgba(9, 255, 0, 0.461);
+  background: rgb(0, 0, 0);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 255, 98, 0.053) 100%
+  );
 }
 
 .releaseDate {
-  color: rgb(62, 158, 243);
+  color: rgb(124, 194, 255);
 }

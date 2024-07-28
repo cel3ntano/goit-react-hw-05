@@ -51,7 +51,7 @@ export default function SearchBar({ clearMovies }) {
         }}
         toastOptions={{
           style: {
-            backgroundColor: "#6d6d6d",
+            backgroundColor: "#f7b5b559",
             border: "1px solid #757575",
             padding: "8px",
             color: "#bababa",

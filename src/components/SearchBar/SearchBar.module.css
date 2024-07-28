@@ -27,11 +27,11 @@
 }
 
 .searchForm input:hover {
-  border: 1px solid rgb(128, 169, 188);
+  border: 1px solid rgba(128, 169, 188, 0.79);
 }
 
 .searchForm input:focus {
-  border: 1px solid rgb(151, 183, 198);
+  border: 1px solid rgba(151, 183, 198, 0.881);
 }
 
 .searchForm input::placeholder {
@@ -53,17 +53,13 @@
   border: none;
 }
 
-.searchForm button:active {
-  /* transform: translateY(1px); */
-}
-
 .searchForm button:hover {
   color: rgb(225, 225, 225);
   scale: 1.2;
 }
 
 .toaster {
-  background-color: #6d6d6d;
+  background-color: #f7b5b559;
   border: 1px solid #757575;
   padding: 8px;
   color: #bababa;

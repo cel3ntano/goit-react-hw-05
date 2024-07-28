@@ -54,7 +54,7 @@
   span {
     color: rgb(37, 255, 255);
     font-weight: 500;
-    margin-right: 3px;
+    margin-left: 5px;
   }
 }
 
@@ -208,4 +208,39 @@
   100% {
     opacity: 1;
   }
+}
+
+.vote {
+  padding: 8px;
+  border-radius: 30%;
+}
+
+.low {
+  border: 2px solid rgba(245, 73, 26, 0.434);
+  background: rgba(0, 0, 0, 0.263);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.379) 0%,
+    rgba(255, 55, 0, 0.053) 100%
+  );
+}
+
+.middle {
+  border: 2px solid rgba(255, 251, 0, 0.461);
+  background: rgba(0, 0, 0, 0.354);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.338) 0%,
+    rgba(255, 204, 0, 0.053) 100%
+  );
+}
+
+.high {
+  border: 2px solid rgba(9, 255, 0, 0.461);
+  background: rgba(0, 0, 0, 0.324);
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.482) 0%,
+    rgba(0, 255, 98, 0.142) 100%
+  );
 }
