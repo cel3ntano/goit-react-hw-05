@@ -1,9 +1,7 @@
 import { useState } from "react";
 import MovieList from "../../components/MovieList/MovieList";
-import { CiSearch } from "react-icons/ci";
 import css from "./MoviesPage.module.css";
 
-import toast, { Toaster } from "react-hot-toast";
 import { fecthMovieByQuery } from "../../api/movies";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
@@ -11,6 +9,7 @@ import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -18,39 +17,21 @@ export default function MoviesPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [isError, setIsError] = useState(false);
-  const [query, setQuery] = useState("");
   const movieListRef = useRef(null);
   const [hasSearched, setHasSearched] = useState(false);
+  const [query, setQuery] = useState("");
 
   const [params, setParams] = useSearchParams();
   // ===================================================================
-  const handleSubmit = e => {
-    e.preventDefault();
-    const newQuery = e.target.elements.search.value.trim();
-    const emptyQuery = () =>
-      toast.error("Please enter a search query", {
-        duration: 2000,
-      });
-    const sameQuery = () =>
-      toast.error(`Already showing results for '${newQuery}'`, {
-        duration: 2000,
-      });
-    if (newQuery === "") {
-      emptyQuery();
-      return;
-    }
-    if (newQuery === query) {
-      sameQuery();
-      return;
-    }
-    setMovies([]);
-    setPage(1);
-    setQuery(newQuery);
-    e.target.reset();
-  };
 
   const handleLoadMore = () => {
     setPage(prev => prev + 1);
+  };
+
+  const handleSearch = newQuery => {
+    setMovies([]);
+    setPage(1);
+    setQuery(newQuery);
   };
 
   useEffect(() => {
@@ -98,33 +79,7 @@ export default function MoviesPage() {
 
   return (
     <div className={css.moviesPage}>
-      <form onSubmit={handleSubmit} className={css.searchForm}>
-        <input name='search' type='text' placeholder='Search movies'></input>
-        <button type='submit'>
-          <CiSearch size='22px' />
-        </button>
-        <Toaster
-          containerStyle={{
-            top: 80,
-          }}
-          toastOptions={{
-            style: {
-              backgroundColor: "#6d6d6d",
-              border: "1px solid #757575",
-              padding: "8px",
-              color: "#bababa",
-              marginTop: "45px",
-              maxWidth: "500px",
-            },
-            error: {
-              iconTheme: {
-                primary: "#c36060",
-                secondary: "#dcdcdc",
-              },
-            },
-          }}
-        />
-      </form>
+      <SearchBar handleSearch={handleSearch} />
       <MovieList movies={movies} ref={movieListRef} />
       {isError && (
         <ErrorMessage>
