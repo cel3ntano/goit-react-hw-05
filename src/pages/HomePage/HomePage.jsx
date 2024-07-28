@@ -5,7 +5,6 @@ import css from "./HomePage";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { useSearchParams } from "react-router-dom";
 
 export default function HomePage() {
   const [trendingMovies, setTrendingMovies] = useState([]);

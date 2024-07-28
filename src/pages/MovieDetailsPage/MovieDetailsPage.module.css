@@ -1,6 +1,6 @@
 .movieDetailsWrapper {
   /* max-width: 960px; */
-  margin: 60px auto 0px;
+  margin: 20px auto 0px;
   text-align: left;
 }
 
@@ -68,4 +68,21 @@
 
 .link.active {
   color: aqua;
+}
+
+.goBackLink {
+  padding: 5px;
+  width: 100px;
+  margin: 0 auto;
+  margin-top: 40px;
+  background: #637386;
+  border: 2px solid rgb(74, 70, 83);
+  border-radius: 10px;
+  color: rgb(215, 229, 241);
+  transition: all 0.2s ease;
+}
+
+.goBackLink:hover {
+  background: #6d7d92;
+  color: aliceblue;
 }

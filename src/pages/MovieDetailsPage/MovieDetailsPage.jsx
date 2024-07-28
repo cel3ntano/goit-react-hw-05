@@ -5,13 +5,17 @@ import {
   placeholderPortrait,
   posterBaseURL,
 } from "../../api/movies";
-import { useParams, NavLink, Outlet } from "react-router-dom";
+import { useParams, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
+import { Link } from "react-router-dom";
 import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
+  const location = useLocation();
+  console.log(location);
+
   const { movieId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -75,6 +79,9 @@ export default function MovieDetailsPage() {
 
   return (
     <>
+      <Link to={location.state ?? "/movies"}>
+        <div className={css.goBackLink}>Go back</div>
+      </Link>
       {isError && (
         <ErrorMessage>
           Something went wrong... Please, reload the page
