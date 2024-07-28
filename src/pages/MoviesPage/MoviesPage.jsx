@@ -15,23 +15,25 @@ export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [page, setPage] = useState(1);
   const [isError, setIsError] = useState(false);
   const movieListRef = useRef(null);
   const [hasSearched, setHasSearched] = useState(false);
-  const [query, setQuery] = useState("");
-
   const [params, setParams] = useSearchParams();
-  // ===================================================================
-
-  const handleLoadMore = () => {
-    setPage(prev => prev + 1);
-  };
+  const query = params.get("query") ?? "";
+  const page = Number(params.get("page") ?? 1);
 
   const handleSearch = newQuery => {
     setMovies([]);
-    setPage(1);
-    setQuery(newQuery);
+    setParams({ query: newQuery, page: 1 });
+    // params.set("query", newQuery);
+    // params.set("page", 1);
+    // setParams(params);
+  };
+
+  const handleLoadMore = () => {
+    const newPage = page + 1;
+    params.set("page", newPage);
+    setParams(params);
   };
 
   useEffect(() => {
