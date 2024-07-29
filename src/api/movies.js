@@ -33,12 +33,10 @@ async function fecthMovieCredits(movieId) {
   return cast;
 }
 
-async function fecthMovieReviews(movieId, page) {
-  const response = await axios(`${detailsURL}/${movieId}/reviews`, {
-    params: { page },
-  });
-  const { results: reviews, total_pages: totalPages } = response.data;
-  return { reviews, totalPages };
+async function fecthMovieReviews(movieId) {
+  const response = await axios(`${detailsURL}/${movieId}/reviews`);
+  const { results: reviews } = response.data;
+  return { reviews };
 }
 
 export {

@@ -19,7 +19,6 @@ export default function MoviesPage() {
   const movieListRef = useRef(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const query = searchParams.get("query") ?? "";
   const page = Number(searchParams.get("page") ?? 1);
 
