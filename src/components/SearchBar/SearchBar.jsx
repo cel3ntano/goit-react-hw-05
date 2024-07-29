@@ -11,9 +11,6 @@ export default function SearchBar({ clearMovies }) {
   const handleSearch = newQuery => {
     setParams({ query: newQuery, page: 1 });
     clearMovies();
-    // params.set("query", newQuery);
-    // params.set("page", 1);
-    // setParams(params);
   };
 
   const handleSubmit = e => {

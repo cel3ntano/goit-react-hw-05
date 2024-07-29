@@ -29,8 +29,9 @@ export default function MoviesPage() {
 
   const handleLoadMore = () => {
     const newPage = page + 1;
-    searchParams.set("page", newPage);
-    setSearchParams(searchParams);
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.set("page", newPage);
+    setSearchParams(newSearchParams);
   };
 
   useEffect(() => {
