@@ -14,6 +14,7 @@ export default function MovieReviews() {
   const [isError, setIsError] = useState(false);
   const [visibleCount, setVisibleCount] = useState(2);
   const LoadMoreRef = useRef();
+  const firstReviewRef = useRef(null);
 
   const handleLoadMore = () => {
     setVisibleCount(prevCount => prevCount + 1);
@@ -41,6 +42,13 @@ export default function MovieReviews() {
     }
   }, [visibleCount]);
 
+  useEffect(() => {
+    if (movieReviews.length > 0 && firstReviewRef.current) {
+      const liHeight = firstReviewRef.current.getBoundingClientRect().height;
+      window.scrollBy({ top: liHeight, behavior: "smooth" });
+    }
+  }, [movieReviews]);
+
   return (
     <>
       {!isLoading && movieReviews.length === 0 && (
@@ -55,9 +63,9 @@ export default function MovieReviews() {
       <ul className={css.reviewsList}>
         {movieReviews
           .slice(0, visibleCount)
-          .map(({ author, created_at: posted, id, content }) => {
+          .map(({ author, created_at: posted, id, content }, index) => {
             return (
-              <li key={id}>
+              <li key={id} ref={index === 0 ? firstReviewRef : null}>
                 <div className={css.reviewWrapper}>
                   <p className={css.author}>{author}</p>
                   <p className={css.posted}>{formatDate(posted)}</p>
