@@ -1,11 +1,14 @@
 #root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
 }
 
-.ReactModal__Overlay {
+/* .ReactModal__Overlay {
   opacity: 0;
   transition: opacity 200ms linear;
 }
@@ -16,10 +19,10 @@
 
 .ReactModal__Overlay--before-close {
   opacity: 0;
-}
+} */
 
 .loadMoreWrapper {
   height: 42px;
-  margin-top: 50px;
+  margin: 50px 0;
   text-align: center;
 }

@@ -32,8 +32,8 @@ export default function SimilarMovies() {
   }, [movieId]);
 
   return (
-    <>
-      <h3>See also</h3>
+    <div className={css.similarMovies}>
+      <h3 className={css.similarMoviesHeading}>See also</h3>
       <MovieList movies={similarMovies} />
       <Loader isLoading={isLoading} />
       {isError && (
@@ -41,6 +41,6 @@ export default function SimilarMovies() {
           Something went wrong... Please, reload the page
         </ErrorMessage>
       )}
-    </>
+    </div>
   );
 }

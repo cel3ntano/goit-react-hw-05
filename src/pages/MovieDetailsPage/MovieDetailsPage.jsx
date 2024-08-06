@@ -149,7 +149,7 @@ export default function MovieDetailsPage() {
             </li>
           </ul>
           <div className={css.additionalInfoNavigation}>
-            <h3 className={css.additionalInfoTitle}>Additional information</h3>
+            {/* <h3 className={css.additionalInfoTitle}>Additional information</h3> */}
             <ul className={css.additionalInfoButtons}>
               <li>
                 <NavLink
