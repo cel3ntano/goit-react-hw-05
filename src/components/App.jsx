@@ -3,6 +3,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Navigation from "./Navigation/Navigation";
+import Footer from "./Footer/Footer";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const MovieCast = lazy(() => import("./MovieCast/MovieCast"));
@@ -28,6 +29,7 @@ export default function App() {
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <Footer />
     </>
   );
 }

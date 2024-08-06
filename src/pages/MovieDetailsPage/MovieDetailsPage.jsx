@@ -12,6 +12,7 @@ import {
   placeholderPortrait,
   posterBaseURL,
 } from "../../api/movies";
+import SimilarMovies from "../../components/SimilarMovies/SimilarMovies";
 
 export default function MovieDetailsPage() {
   const location = useLocation();
@@ -175,6 +176,7 @@ export default function MovieDetailsPage() {
               <Outlet />
             </Suspense>
           </div>
+          <SimilarMovies />
         </div>
       )}
     </>

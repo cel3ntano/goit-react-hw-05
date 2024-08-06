@@ -42,12 +42,12 @@ export default function MovieReviews() {
     }
   }, [visibleCount]);
 
-  useEffect(() => {
-    if (movieReviews.length > 0 && firstReviewRef.current) {
-      const liHeight = firstReviewRef.current.getBoundingClientRect().height;
-      window.scrollBy({ top: liHeight, behavior: "smooth" });
-    }
-  }, [movieReviews]);
+  // useEffect(() => {
+  //   if (movieReviews.length > 0 && firstReviewRef.current) {
+  //     const liHeight = firstReviewRef.current.getBoundingClientRect().height;
+  //     window.scrollBy({ top: liHeight, behavior: "smooth" });
+  //   }
+  // }, [movieReviews]);
 
   return (
     <>

@@ -1,3 +1,7 @@
+.additionalInfoWrapper {
+  /* min-height: 100vh; */
+}
+
 .movieDetailsWrapper {
   max-width: 1000px;
   margin: 20px auto 0px;

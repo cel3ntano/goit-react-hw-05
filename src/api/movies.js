@@ -26,6 +26,10 @@ async function fecthMovieByQuery(query, page) {
   const { total_pages: totalPages, results: queryResults } = response.data;
   return { totalPages, queryResults };
 }
+async function fecthSimilarMovies(movieId) {
+  const response = await axios(`${detailsURL}/${movieId}/similar`);
+  return response.data.results;
+}
 
 async function fecthMovieCredits(movieId) {
   const response = await axios(`${detailsURL}/${movieId}/credits`);
@@ -45,6 +49,7 @@ export {
   fecthMovieByQuery,
   fecthMovieCredits,
   fecthMovieReviews,
+  fecthSimilarMovies,
   posterBaseURL,
   placeholderPortrait,
 };

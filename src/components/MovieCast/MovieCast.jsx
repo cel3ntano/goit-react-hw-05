@@ -9,7 +9,6 @@ import {
   placeholderPortrait,
   posterBaseURL,
 } from "../../api/movies";
-import { useLayoutEffect } from "react";
 
 export default function MovieCast() {
   const { movieId } = useParams();
@@ -52,16 +51,16 @@ export default function MovieCast() {
     getMovieCreditsData();
   }, [movieId]);
 
-  useEffect(() => {
-    if (movieCredits.length > 0 && firstCastRef.current) {
-      const timerId = setTimeout(() => {
-        const cardHeight = firstCastRef.current.getBoundingClientRect().height;
-        window.scrollBy({ top: cardHeight * 1.5, behavior: "smooth" });
-      }, 200);
+  // useEffect(() => {
+  //   if (movieCredits.length > 0 && firstCastRef.current) {
+  //     const timerId = setTimeout(() => {
+  //       const cardHeight = firstCastRef.current.getBoundingClientRect().height;
+  //       window.scrollBy({ top: cardHeight, behavior: "smooth" });
+  //     }, 200);
 
-      return () => clearTimeout(timerId);
-    }
-  }, [movieCredits]);
+  //     return () => clearTimeout(timerId);
+  //   }
+  // }, [movieCredits]);
 
   return (
     <>
