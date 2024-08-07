@@ -1,7 +1,7 @@
 .searchForm {
   padding: 0 20px;
   max-width: 640px;
-  margin: 52px auto 0px;
+  margin: 70px auto -30px;
   position: relative;
 }
 
@@ -57,9 +57,9 @@
   scale: 1.2;
 }
 
-.toaster {
+/* .toaster {
   background-color: #f7b5b559;
   border: 1px solid #757575;
-  padding: 8px;
+  padding: 4px;
   color: #bababa;
-}
+} */

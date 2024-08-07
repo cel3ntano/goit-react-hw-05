@@ -1,3 +1,4 @@
+import css from "./SimilarMovies.module.css";
 import { useParams } from "react-router-dom";
 import { fecthSimilarMovies } from "../../api/movies";
 import MovieList from "../MovieList/MovieList";
@@ -5,7 +6,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
-import css from "./SimilarMovies.module.css";
 
 export default function SimilarMovies() {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,8 +33,12 @@ export default function SimilarMovies() {
 
   return (
     <div className={css.similarMovies}>
-      <h3 className={css.similarMoviesHeading}>See also</h3>
-      <MovieList movies={similarMovies} />
+      {similarMovies.length > 0 && (
+        <>
+          <h3 className={css.similarMoviesHeading}>See also</h3>
+          <MovieList movies={similarMovies} />
+        </>
+      )}
       <Loader isLoading={isLoading} />
       {isError && (
         <ErrorMessage>

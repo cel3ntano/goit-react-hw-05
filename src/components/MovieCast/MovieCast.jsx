@@ -23,15 +23,33 @@ export default function MovieCast() {
     setVisibleCount(prevCount => prevCount + 5);
   };
 
-  useEffect(() => {
-    if (visibleCount > 5) {
-      const timerId = setTimeout(() => {
-        if (LoadMoreRef.current) {
-          LoadMoreRef.current.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
+  // useEffect(() => {
+  //   if (movieCredits.length > 0 && firstCastRef.current) {
+  //     const timerId = setTimeout(() => {
+  //       const cardHeight = firstCastRef.current.getBoundingClientRect().height;
+  //       window.scrollBy({ top: cardHeight * 0.5, behavior: "smooth" });
+  //     }, 200);
 
-      return () => clearTimeout(timerId);
+  //     return () => clearTimeout(timerId);
+  //   }
+  // }, [movieCredits]);
+
+  // useEffect(() => {
+  //   if (visibleCount > 5) {
+  //     const timerId = setTimeout(() => {
+  //       if (LoadMoreRef.current) {
+  //         LoadMoreRef.current.scrollIntoView({ behavior: "smooth" });
+  //       }
+  //     }, 100);
+
+  //     return () => clearTimeout(timerId);
+  //   }
+  // }, [visibleCount]);
+
+  useEffect(() => {
+    if (visibleCount > 5 && firstCastRef.current) {
+      const cardHeight = firstCastRef.current.getBoundingClientRect().height;
+      window.scrollBy({ top: cardHeight, behavior: "smooth" });
     }
   }, [visibleCount]);
 
@@ -51,19 +69,11 @@ export default function MovieCast() {
     getMovieCreditsData();
   }, [movieId]);
 
-  // useEffect(() => {
-  //   if (movieCredits.length > 0 && firstCastRef.current) {
-  //     const timerId = setTimeout(() => {
-  //       const cardHeight = firstCastRef.current.getBoundingClientRect().height;
-  //       window.scrollBy({ top: cardHeight, behavior: "smooth" });
-  //     }, 200);
-
-  //     return () => clearTimeout(timerId);
-  //   }
-  // }, [movieCredits]);
-
   return (
     <>
+      {!isLoading && movieCredits.length === 0 && (
+        <ErrorMessage>No cast information found...</ErrorMessage>
+      )}
       {isError && (
         <ErrorMessage>
           Something went wrong... Please, reload the page

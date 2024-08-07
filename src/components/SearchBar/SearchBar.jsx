@@ -18,7 +18,7 @@ export default function SearchBar({ clearMovies }) {
     const newQuery = e.target.elements.search.value.trim();
     const emptyQuery = () =>
       toast.error("Please enter a search query", {
-        duration: 2000,
+        duration: 20000,
       });
     const sameQuery = () =>
       toast.error(`Already showing results for '${newQuery}'`, {
@@ -48,11 +48,12 @@ export default function SearchBar({ clearMovies }) {
         }}
         toastOptions={{
           style: {
-            backgroundColor: "#f7b5b559",
-            border: "1px solid #757575",
-            padding: "8px",
+            // backgroundColor: "#f7b5b559",
+            backgroundColor: "#542f2fbd",
+            // border: "1px solid #757575",
+            padding: "3px 5px",
             color: "#bababa",
-            marginTop: "45px",
+            marginTop: "16px",
             maxWidth: "500px",
           },
           error: {
