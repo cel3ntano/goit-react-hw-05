@@ -18,7 +18,7 @@ export default function SearchBar({ clearMovies }) {
     const newQuery = e.target.elements.search.value.trim();
     const emptyQuery = () =>
       toast.error("Please enter a search query", {
-        duration: 20000,
+        duration: 2000,
       });
     const sameQuery = () =>
       toast.error(`Already showing results for '${newQuery}'`, {
